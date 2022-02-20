@@ -4,7 +4,7 @@ import {Task, TaskUtils} from '../../model/task.model';
 import {MyStateService} from './my-state.service';
 
 @Component({
-  selector: 'todo-create',
+  selector: 'app-create',
   template: `
     <refresh-count name="CREATE"></refresh-count>
     <form>

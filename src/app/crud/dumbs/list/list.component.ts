@@ -3,7 +3,7 @@ import {Plog} from '@gpeel/plog';
 import {Task, TASKS_FILTER_ENUM,} from '../../model/task.model';
 
 @Component({
-  selector: 'todo-list',
+  selector: 'app-list',
   templateUrl: './list.component.html',
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -6,9 +6,9 @@ export interface Task {
 
 export class TaskUtils {
 
-  static nextId: number = 1;
+  static nextId = 1;
 
-  static createTask(label: string, completed: boolean = false): Task {
+  static createTask(label: string, completed = false): Task {
     return {id: this.nextId++, label, completed};
   }
 

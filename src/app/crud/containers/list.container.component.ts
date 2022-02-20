@@ -10,11 +10,11 @@ import {Task} from '../model/task.model';
 @Component({
   template: `
     <refresh-count name="LIST-CONTAINER"></refresh-count>
-    <todo-list [tasks]="tasks"
+    <app-list [tasks]="tasks"
                (removeTask)="onRemove($event)"
                (updateTask)="onUpdate($event)"
                (toggleAllTasks)="onToggleAll($event)"
-    ></todo-list>
+    ></app-list>
     <!--    <todo-list [tasks]="tasksStateService.getTasks()"-->
     <!--               (removeTask)="onRemove($event)"-->
     <!--               (updateTask)="onUpdate($event)"-->

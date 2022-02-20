@@ -9,7 +9,7 @@ import {Task} from '../model/task.model';
 @Component({
   template: `
     <refresh-count name="CREATE-CONTAINER"></refresh-count>
-    <todo-create (createdTask)="onCreate($event)"></todo-create>
+    <app-create (createdTask)="onCreate($event)"></app-create>
 
   `,
   // changeDetection: ChangeDetectionStrategy.OnPush,
