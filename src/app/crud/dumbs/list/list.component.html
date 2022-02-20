@@ -1,0 +1,37 @@
+<refresh-count name="LIST"></refresh-count>
+<section class="main">
+  <input (click)="toggleAll($any($event.target).checked )" class="toggle-all" id="toggle-all" type="checkbox">
+  <label for="toggle-all">Complete All Tasks</label>
+  <ul class="todo-list">
+    <li *ngFor="let task of (tasks | tasksFilterPipe: tasksFilterStatus); index as idx"
+        [ngClass]="{completed: task.completed}">
+      <div class="view">
+        <input (click)="onToggleOneTask(task)" [checked]="task.completed"
+               class="toggle" id="task_{{idx}}" type="checkbox">
+        <label for="task_{{idx}}">{{task.label | uppercase}}</label>
+        <button (click)="onRemoveTask(task)" class="destroy"></button>
+      </div>
+    </li>
+  </ul>
+</section>
+<footer class="footer">
+    <span class="todo-count">
+      <strong>{{ tasks | remainingTasks}}</strong></span>
+  <ul class="filters">
+    <li>
+      <a (click)="setTasksFilterStatus(TASKS_FILTER_ENUM.ALL)"
+         [class.selected]="isFilterStatus(TASKS_FILTER_ENUM.ALL)">ALL</a>
+    </li>
+    <li>
+      <a (click)="setTasksFilterStatus(TASKS_FILTER_ENUM.ACTIVE)"
+         [class.selected]="isFilterStatus(TASKS_FILTER_ENUM.ACTIVE)">ACTIVE</a>
+    </li>
+    <li>
+      <a (click)="setTasksFilterStatus(TASKS_FILTER_ENUM.COMPLETED)"
+         [class.selected]="isFilterStatus(TASKS_FILTER_ENUM.COMPLETED)">COMPLETED</a>
+    </li>
+  </ul>
+</footer>
+
+
+
