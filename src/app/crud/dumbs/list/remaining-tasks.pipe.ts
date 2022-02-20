@@ -1,5 +1,4 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Plog} from '@gpeel/plog';
 import {Task} from '../../model/task.model';
 
 /**
@@ -17,8 +16,7 @@ export class RemainingTasksPipe implements PipeTransform {
   counter = 0;
 
   transform(tasks: Task[]): string {
-    Plog.pipe('RemainingTasks Pipe computates:' + this.counter++);
-    if (!tasks) return '';
+    console.log('RemainingTasks Pipe computates:' + this.counter++);
     const num = tasks.filter(t => !t.completed).length;
     switch (num) {
       case 0:

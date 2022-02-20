@@ -3,8 +3,8 @@ import {Router} from '@angular/router';
 import {Plog} from '@gpeel/plog';
 import {MyGlobalService} from '../../core';
 import {MyFeatureService} from '../core/my-feature.service';
-import {TaskHttp} from '../core/task-http';
 import {Task} from '../model/task.model';
+import {TasksStateService} from '../state/tasks-state.service';
 
 @Component({
   template: `
@@ -16,9 +16,9 @@ import {Task} from '../model/task.model';
 })
 export class CreateContainerComponent {
 
-  constructor(private taskHttp: TaskHttp,
-              private myFeatureService: MyFeatureService,
+  constructor(private myFeatureService: MyFeatureService,
               private myGlobalService: MyGlobalService,
+              private tasksStateService: TasksStateService,
               private router: Router) {
     Plog.createComponent('CrudContainerComponent');
     myFeatureService.execute();
@@ -26,17 +26,8 @@ export class CreateContainerComponent {
   }
 
   onCreate(task: Task) {
-    // COMPLETE Code here to call create(task) on TaskHttp
-    // and on return navigate back to /crud/list
-    this.taskHttp.create(task).subscribe(
-      t => {
-        this.router.navigate(['/crud/list']);
-        Plog.callback('SUCCESS onCreate!', t); // simulating toast
-      },
-      error => {
-        Plog.callback('ERROR onCreate!', error); // simulating toast
-      }
-    );
+    this.tasksStateService.add(task);
+    this.router.navigate(['/crud/list']);
   }
 
 }
